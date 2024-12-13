@@ -62,6 +62,13 @@ SELECT city , COUNT(rollno) FROM student GROUP BY city;
 SELECT city,name , COUNT(rollno) FROM student GROUP BY city , name;
 SELECT name ,SUM(rollno) FROM student GROUP BY name;
 SELECT city , AVG(rollno) FROM student GROUP BY city;
+SELECT city, AVG(marks) FROM student GROUP BY city ORDER BY AVG(marks);
+SELECT city, AVG(marks) FROM student GROUP BY city ORDER BY AVG(marks) DESC;
+SELECT grade , COUNT(rollno) FROM student GROUP BY grade ORDER BY grade;
+
+
+SELECT city, COUNT(rollno) FROM student GROUP BY city ;
+SELECT city, COUNT(rollno) FROM student GROUP BY city HAVING MAX(marks) > 90;
 
 
 
