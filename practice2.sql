@@ -71,5 +71,16 @@ SELECT city, COUNT(rollno) FROM student GROUP BY city ;
 SELECT city, COUNT(rollno) FROM student GROUP BY city HAVING MAX(marks) > 90;
 
 
+DROP TABLE IF EXISTS gittable;
 
+DROP DATABASE IF EXISTS git;
+
+USE colege;
+
+SELECT city 
+FROM student
+WHERE GRADE="A"
+GROUP BY city
+HAVING MAX(marks) >=95
+ORDER BY city DESC;
 
