@@ -114,5 +114,44 @@ RENAME TO student;
 ALTER TABLE student 
 CHANGE name full_name VARCHAR(50);
 SELECT * FROM student;
-SET SAFE UPDATE MODE=0;
+ SET SQL_SAFE_UPDATES = 0;
+ USE colege;
 DELETE FROM student WHERE marks <80;
+
+USE colege;
+SELECT * FROM student;
+
+ALTER TABLE student
+DROP COLUMN grade;
+
+/* SUBQUERY */
+SELECT full_name,marks
+FROM student
+Where marks > (SELECT AVG(marks) FROM student);
+
+/* EVEN NUMBER */
+SELECT rollno FROM student
+Where rollno % 2=0;
+
+/* PRINT ALL NAME HAVING EVEN ROLLNO BY USING SUBQUERY :- "Where" */
+SELECT full_name, rollno
+FROM student
+Where rollno IN (
+    SELECT rollno FROM student
+	Where rollno % 2=0 );
+    
+    /* PRINT THE MAX MARKS FROM THE STUDENTS OF DELHI BY USING SUBQUERY :- "FROM" */
+    SELECT MAX(marks)
+    FROM (SELECT * FROM student Where city = "delhi") AS temp;
+    
+    /* SUBQUERY :- "SELECT" */
+    SELECT (SELECT MAX(marks) FROM student), full_name
+    FROM student;
+    
+    /* VIRTUAL TABLE OR VIEW TABLE */
+    CREATE VIEW view1 AS
+    SELECT rollno, full_name, marks FROM student;
+    
+    SELECT * FROM view1;
+    SELECT * FROM view1
+    Where marks > 90;
