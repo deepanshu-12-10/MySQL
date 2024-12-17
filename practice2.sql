@@ -83,4 +83,36 @@ WHERE GRADE="A"
 GROUP BY city
 HAVING MAX(marks) >=95
 ORDER BY city DESC;
+USE colege;
+SELECT * FROM student;
 
+
+ALTER TABLE student
+MODIFY COLUMN age VARCHAR(2);
+
+INSERT INTO student
+(rollno,name,marks,age)
+VALUES
+(107,"gargi",68,10);
+
+ALTER TABLE student
+CHANGE age stu_age INT;
+
+INSERT INTO student
+(rollno,name,marks,stu_age)
+VALUES
+(108,"garg",68,100);
+
+ALTER TABLE student
+RENAME TO stu;
+
+SELECT * FROM stu;
+
+ALTER TABLE stu
+RENAME TO student;
+
+ALTER TABLE student 
+CHANGE name full_name VARCHAR(50);
+SELECT * FROM student;
+SET SAFE UPDATE MODE=0;
+DELETE FROM student WHERE marks <80;
